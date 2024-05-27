@@ -14,7 +14,12 @@ module SettingsOnRails
       klass.class_eval do
         class_attribute Configuration::NAME_COLUMN, Configuration::DEFAULTS_COLUMN
 
-        serialize column, HashWithIndifferentAccess
+        if ActiveRecord.version > Gem::Version.new('7.1')
+          serialize column, type: ActiveSupport::HashWithIndifferentAccess, coder: YAML
+        else
+          serialize column, ActiveSupport::HashWithIndifferentAccess
+        end
+
         Configuration::init_defaults_column(self)
         Configuration::init_name_column(self, column)
       end
@@ -50,7 +55,9 @@ module SettingsOnRails
     private
 
     def self.column_type_not_text?(instance, settings_column)
-      return true if instance.column_for_attribute(settings_column).try(:sql_type) != 'text'
+      return false if instance.column_for_attribute(settings_column).sql_type.nil?
+
+      instance.column_for_attribute(settings_column).try(:sql_type).downcase != 'text'
     end
   end
 end

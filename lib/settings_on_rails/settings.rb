@@ -8,7 +8,7 @@ module SettingsOnRails
       @column_name = settings_column_name
       @method_name = method_name
 
-      self.class_eval do
+      self.class.class_eval do
         define_method(method_name, instance_method(:_settings))
       end
     end
