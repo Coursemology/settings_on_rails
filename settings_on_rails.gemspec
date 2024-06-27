@@ -19,11 +19,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = '>= 3.1.0'
+  spec.required_ruby_version = '>= 3'
   spec.add_dependency 'rails', '>= 6'
 
   spec.add_development_dependency 'sqlite3', '~> 1.7'
   spec.add_development_dependency 'bundler', '>= 1.6'
-  spec.add_development_dependency 'rspec-rails', '~> 3.3'
+  spec.add_development_dependency "appraisal", "~> 2.1"
   spec.add_development_dependency 'rake'
 end
