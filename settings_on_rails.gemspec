@@ -6,7 +6,7 @@ require 'settings_on_rails/version'
 Gem::Specification.new do |spec|
   spec.name          = 'settings_on_rails'
   spec.version       = SettingsOnRails::VERSION
-  spec.authors       = ['Bivan Alzacky Harmanto']
+  spec.authors       = ['Adi Suryanata Herwana', 'Allen Wang Qiang', 'Bivan Alzacky Harmanto']
   spec.email         = ['bivan.alzacky@gmail.com']
 
   spec.summary       = %q{Model specific Hash Preferences/Settings for Rails.}
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = '>= 3'
-  spec.add_dependency 'rails', '>= 6'
+  spec.add_dependency 'rails', '>= 7'
 
   spec.add_development_dependency 'sqlite3', '~> 1.7'
   spec.add_development_dependency 'bundler', '>= 1.6'
